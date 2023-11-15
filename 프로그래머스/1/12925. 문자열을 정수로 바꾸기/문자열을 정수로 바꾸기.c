@@ -10,16 +10,6 @@ int solution(const char* s) {
     //int size=strlen(s);
     //char *str=(char*)malloc(sizeof(char)*5);
     answer=atoi(s);
-    if(s[0]=='-'){
-        for(int i=0;i<5;i++){
-            if(i>=1){
-               temp=-1*(answer%10)*(i*10);
-            }
-            else{
-                temp=-1*answer%10;
-            }
-        }
-    }
-    
+ 
     return answer;
 }
