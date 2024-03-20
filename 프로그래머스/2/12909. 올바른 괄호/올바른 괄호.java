@@ -11,9 +11,11 @@ class Solution {
                 stack.push(a);
             }
             else{
-                if(stack.isEmpty()||stack.pop()==a){
-                    System.out.println(a+" "+cnt);
+                if(stack.isEmpty()){
                     return false;
+                }
+                else{
+                    stack.pop();
                 }
             }
         }
