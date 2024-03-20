@@ -1,8 +1,7 @@
 import java.util.*;
 class Solution {
     public int[] solution(int[] answers) {
-        int[] answer = {};
-        int num=0;
+     
         int[][] pattern={
             {1,2,3,4,5},
             {2,1,2,3,2,4,2,5},
@@ -24,7 +23,13 @@ class Solution {
                 list.add(i+1);
             }
         }
+        int[] answer = new int[list.size()];
+        int cnt=0;
+        for(int num:list){
+            answer[cnt++]=num;
+        }
         
-        return list.stream().mapToInt(Integer::intValue).toArray();
+        
+        return answer;
     }
 }
