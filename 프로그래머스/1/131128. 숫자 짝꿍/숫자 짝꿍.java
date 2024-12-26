@@ -1,39 +1,26 @@
-import java.util.*;
-
 class Solution {
     public String solution(String X, String Y) {
-     
-        List<String> xList = new ArrayList<>(Arrays.asList(X.split("")));
-        List<String> yList = new ArrayList<>(Arrays.asList(Y.split("")));
+        StringBuilder answer = new StringBuilder();
+        int[] x = {0,0,0,0,0,0,0,0,0,0};
+        int[] y = {0,0,0,0,0,0,0,0,0,0};
+        for(int i=0; i<X.length();i++){
+           x[X.charAt(i)-48] += 1;
+        }
+        for(int i=0; i<Y.length();i++){
+           y[Y.charAt(i)-48] += 1;
+        }
 
-  
-        Collections.sort(xList);
-        Collections.sort(yList);
-
- 
-        List<String> duplList = new ArrayList<>();
-        
-        // 두 리스트를 순차적으로 비교하여 공통된 숫자를 찾음
-        int i = 0, j = 0;
-        while (i < xList.size() && j < yList.size()) {
-            if (xList.get(i).equals(yList.get(j))) {
-                duplList.add(xList.get(i));  // 공통된 숫자 추가
-                i++;
-                j++;
-            } else if (xList.get(i).compareTo(yList.get(j)) < 0) {
-                i++;
-            } else {
-                j++;
+        for(int i=9; i >= 0; i--){
+            for(int j=0; j<Math.min(x[i],y[i]); j++){
+                answer.append(i);
             }
         }
-        if(duplList.isEmpty()){
-            return "-1";
+        if("".equals(answer.toString())){
+           return "-1";
+        }else if(answer.toString().charAt(0)==48){
+           return "0";
+        }else {
+            return answer.toString();
         }
-        if(Collections.frequency(duplList,"0")==duplList.size()){
-            return "0";
-        }
-        Collections.sort(duplList,Comparator.reverseOrder());
-        String answer = String.join("",duplList);
-        return answer;
     }
 }
